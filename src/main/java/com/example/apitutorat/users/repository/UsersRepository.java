@@ -31,5 +31,8 @@ public interface UsersRepository extends JpaRepository<Utulisateur, Long> {
     @Query("select users FROM Utulisateur  users where users.etat='DESACTIVER'")
     public List<Utulisateur> listDel();
 
+    @Query("select users FROM Eleve  users where users.etat='DESACTIVER'")
+    public List<Utulisateur> listDelE();
+
 
 }

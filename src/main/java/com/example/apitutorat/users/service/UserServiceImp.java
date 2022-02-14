@@ -69,7 +69,7 @@ public class UserServiceImp implements UserService{
 
     @Override
     public List<Utulisateur> FindAllDel() {
-        return usersRepository.listDel();
+        return usersRepository.listDelE();
     }
 
     //----------------fin

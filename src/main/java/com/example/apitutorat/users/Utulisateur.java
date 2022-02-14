@@ -19,6 +19,8 @@ public abstract class Utulisateur {
     private String prenom;
     private String numero;
     private String addresse;
+
+    @Enumerated(EnumType.STRING)
     private Profile profile;
     private String password;
     private Etat etat = Etat.ACTIVER;
