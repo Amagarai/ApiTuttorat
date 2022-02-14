@@ -74,6 +74,11 @@ public class UserController {
         return userService.findAllParent();
     }
 
+    @GetMapping("trouver/{id}")
+    public Utulisateur findByID(@PathVariable Long id){
+        return userService.finById(id);
+    }
+
 
 
 
