@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface UsersRepository extends JpaRepository<Utulisateur, Long> {
     public List<Tuteur> findByAddresseAndSpecialite(String ville, String specialite);
+    //public List<Utulisateur> findByEtat_Activer();
 }

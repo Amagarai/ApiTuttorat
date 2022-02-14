@@ -26,6 +26,20 @@ public class UserServiceImp implements UserService{
     @Autowired
     ParentRepository parentRepository;
 
+
+    //----------------------------section de recherche---------------------------
+
+
+    @Override
+    public List<Utulisateur> findAll() {
+        return null;
+    }
+
+    @Override
+    public Utulisateur finById(Long id) {
+        return usersRepository.findById(id).get();
+    }
+
     @Override
     public List<Utulisateur> liste() {
         return usersRepository.findAll();
