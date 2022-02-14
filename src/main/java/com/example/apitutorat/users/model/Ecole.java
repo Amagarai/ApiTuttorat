@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
@@ -14,6 +15,7 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Ecole extends Utulisateur {
+    @Column(length = 24)
     private String site;
     private String email;
 }
