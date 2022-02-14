@@ -28,8 +28,7 @@ public interface UsersRepository extends JpaRepository<Utulisateur, Long> {
 
     //-----------------------------section pour lister les etats desactiver-------------------------------
 
-    @Query("select tuteur FROM Utulisateur  tuteur where tuteur.etat='DESACTIVER' and tuteur.profile='TUTEUR'")
-    public List<Utulisateur> listerTuteurDel();
-
+    @Query("select users FROM Utulisateur  users where users.etat='DESACTIVER'")
+    public List<Utulisateur> listDel();
 
 }

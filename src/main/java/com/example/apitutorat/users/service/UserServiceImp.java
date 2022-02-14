@@ -27,7 +27,7 @@ public class UserServiceImp implements UserService{
     ParentRepository parentRepository;
 
 
-    //----------------------------section de recherche---------------------------
+    //----------------------------section de liste---------------------------
 
 
     @Override
@@ -64,6 +64,11 @@ public class UserServiceImp implements UserService{
     @Override
     public List<Tuteur> recherche(String ville, String specialite) {
         return usersRepository.findByAddresseAndSpecialite(ville, specialite);
+    }
+
+    @Override
+    public List<Utulisateur> FindAllDel() {
+        return usersRepository.listDel();
     }
 
     //----------------fin
@@ -183,5 +188,22 @@ public class UserServiceImp implements UserService{
         usersRepository.save(user);
     }
 
+    //---------------------section delete et restorer--------------------------------------------------------------
 
+
+    @Override
+    public void delete(Long id) {
+        Utulisateur utulisateur= usersRepository.findById(id).get();
+        utulisateur.setEtat(Etat.DESACTIVER);
+        utulisateur.setSupprime(true);
+        usersRepository.save(utulisateur);
+    }
+
+    @Override
+    public void restore(Long id) {
+        Utulisateur user= usersRepository.findById(id).get();
+        user.setEtat(Etat.ACTIVER);
+        user.setSupprime(false);
+        usersRepository.save(user);
+    }
 }

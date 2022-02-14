@@ -79,6 +79,11 @@ public class UserController {
         return userService.finById(id);
     }
 
+    @GetMapping("liste/del")
+    public List<Utulisateur> findAllDel(){
+        return userService.FindAllDel();
+    }
+
 
 
 
@@ -112,5 +117,17 @@ public class UserController {
     @PutMapping("user/modifypass/{id}/{user}")
     public void Modify_Password(@PathVariable Long id, @PathVariable Utulisateur user){
         userService.modify_pass(id, user);
+    }
+
+
+    //-------------------------------section supprimer te restorer---------------------------------------
+    @PutMapping("del/{id}")
+    public void delete(@PathVariable Long id){
+        userService.supprinmer(id);
+    }
+
+    @PutMapping("restore/{id}")
+    public void restorer(@PathVariable Long id){
+        userService.restore(id);
     }
 }

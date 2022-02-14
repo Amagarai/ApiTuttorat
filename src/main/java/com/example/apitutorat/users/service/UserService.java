@@ -13,12 +13,13 @@ public interface UserService {
     public List<Utulisateur> liste();
     public void supprinmer(Long id);
 
-    //--------------------section recherche---------------------------------
+    //--------------------section Liste---------------------------------
     public Utulisateur finById(Long id);
     public List<Utulisateur> findAllEleve();
     public List<Utulisateur> findAllEcole();
     public List<Utulisateur> findAllParent();
     public List<Utulisateur> findAllTuteur();
+    public List<Utulisateur> FindAllDel();
 
 
     //-------------------------section modier-----------------------------------------------
@@ -30,6 +31,8 @@ public interface UserService {
     public void modify_pass(Long id, Utulisateur utulisateur);
     public List<Tuteur> recherche(String ville, String specialite);
 
+    //---------fin
+
     //------------------Section ajout-------------------------------------------------------
 
     public Utulisateur addEleve(Eleve eleve);
@@ -37,4 +40,10 @@ public interface UserService {
     public Utulisateur addParent(Parent parent);
     public Utulisateur addTuteur(Tuteur tuteur);
 
+    //----fin
+
+    //--------------------section supprimer et restorer-------------------
+
+    public void restore(Long id);
+    public void delete(Long id);
 }
