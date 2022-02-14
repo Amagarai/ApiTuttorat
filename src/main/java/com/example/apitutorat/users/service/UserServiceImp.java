@@ -61,6 +61,11 @@ public class UserServiceImp implements UserService{
         return usersRepository.findAll();
     }
 
+    @Override
+    public List<Utulisateur> listerParentEleve() {
+        return usersRepository.listerParentEleve();
+    }
+
 
     @Override
     public List<Tuteur> recherche(String ville, String specialite) {
@@ -69,7 +74,7 @@ public class UserServiceImp implements UserService{
 
     @Override
     public List<Utulisateur> FindAllDel() {
-        return usersRepository.listDelE();
+        return usersRepository.listDel();
     }
 
     //----------------fin

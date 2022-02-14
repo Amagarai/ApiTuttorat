@@ -12,6 +12,8 @@ public interface UserService {
 
     public List<Utulisateur> liste();
 
+    public List<Utulisateur> listerParentEleve();
+
     //--------------------section Liste---------------------------------
     public Utulisateur finById(Long id);
     public List<Utulisateur> findAllEleve();

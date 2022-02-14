@@ -25,14 +25,13 @@ public interface UsersRepository extends JpaRepository<Utulisateur, Long> {
     @Query("select ecole FROM Ecole  ecole where ecole.etat='ACTIVER' ")
     public List<Utulisateur> listerEcole();
 
+    @Query("select parent FROM Utulisateur parent where parent.etat='ACTIVER' AND parent.profile='ELEVE' or parent.profile='PARENT'")
+    public List<Utulisateur> listerParentEleve();
 
     //-----------------------------section pour lister les etats desactiver-------------------------------
 
     @Query("select users FROM Utulisateur  users where users.etat='DESACTIVER'")
     public List<Utulisateur> listDel();
-
-    @Query("select users FROM Eleve  users where users.etat='DESACTIVER'")
-    public List<Utulisateur> listDelE();
 
 
 }

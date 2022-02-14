@@ -84,6 +84,11 @@ public class UserController {
         return userService.FindAllDel();
     }
 
+    @GetMapping("liste/users")
+    public List<Utulisateur> listerParentEleve(){
+        return userService.listerParentEleve();
+    }
+
 
 
 
