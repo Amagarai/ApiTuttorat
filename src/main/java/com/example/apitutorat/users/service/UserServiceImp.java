@@ -57,6 +57,7 @@ public class UserServiceImp implements UserService{
 
     @Override
     public List<Utulisateur> liste() {
+
         return usersRepository.findAll();
     }
 
@@ -73,13 +74,6 @@ public class UserServiceImp implements UserService{
 
     //----------------fin
 
-
-    @Override
-    public void supprinmer(Long id) {
-        Utulisateur user= usersRepository.findById(id).get();
-        user.setEtat(Etat.DESACTIVER);
-        usersRepository.save(user);
-    }
 
     //--------------------------------------section pour ajouter les utilisateurs----------------------------------------------
 

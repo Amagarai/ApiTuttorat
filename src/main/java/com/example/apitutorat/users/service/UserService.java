@@ -11,7 +11,6 @@ import java.util.List;
 public interface UserService {
 
     public List<Utulisateur> liste();
-    public void supprinmer(Long id);
 
     //--------------------section Liste---------------------------------
     public Utulisateur finById(Long id);

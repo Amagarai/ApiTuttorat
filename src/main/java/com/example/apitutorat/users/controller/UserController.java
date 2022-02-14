@@ -123,7 +123,7 @@ public class UserController {
     //-------------------------------section supprimer te restorer---------------------------------------
     @PutMapping("del/{id}")
     public void delete(@PathVariable Long id){
-        userService.supprinmer(id);
+        userService.delete(id);
     }
 
     @PutMapping("restore/{id}")

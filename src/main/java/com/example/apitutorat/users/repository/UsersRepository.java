@@ -13,16 +13,16 @@ public interface UsersRepository extends JpaRepository<Utulisateur, Long> {
 
     //------------------section pour lister les utilisateurs-------------------------------------
 
-    @Query("SELECT searc FROM Utulisateur searc WHERE searc.etat='ACTIVER' and searc.profile='ELEVE'")
+    @Query("SELECT searc FROM Eleve searc WHERE searc.etat='ACTIVER' AND searc.profile='ELEVE'")
     public List<Utulisateur> listerEleve();
 
-    @Query("select tuteur FROM Utulisateur  tuteur where tuteur.etat='ACTIVER' and tuteur.profile='TUTEUR'")
+    @Query("select tuteur FROM Tuteur  tuteur where tuteur.etat='ACTIVER' AND tuteur.profile='TUTEUR'")
     public List<Utulisateur> listerTuteur();
 
-    @Query("select parent FROM Utulisateur  parent where parent.etat='ACTIVER' and parent.profile='PARENT'")
+    @Query("select parent FROM Parent  parent where parent.etat='ACTIVER' AND parent.profile='PARENT'")
     public List<Utulisateur> listerParent();
 
-    @Query("select ecole FROM Utulisateur  ecole where ecole.etat='ACTIVER' and ecole.profile='TUTEUR'")
+    @Query("select ecole FROM Ecole  ecole where ecole.etat='ACTIVER' AND ecole.profile='ECOLE'")
     public List<Utulisateur> listerEcole();
 
 
@@ -30,5 +30,6 @@ public interface UsersRepository extends JpaRepository<Utulisateur, Long> {
 
     @Query("select users FROM Utulisateur  users where users.etat='DESACTIVER'")
     public List<Utulisateur> listDel();
+
 
 }
