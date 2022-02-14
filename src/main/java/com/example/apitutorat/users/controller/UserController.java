@@ -42,10 +42,40 @@ public class UserController {
 
     //--------------fin
 
+    //------------------------section de recherche---------------------------------
+
     @GetMapping("search/{ville}/{specialite}")
     public List<Tuteur> recherche(@PathVariable String ville, @PathVariable String specialite){
         return userService.recherche(ville, specialite);
     }
+
+    @GetMapping("liste")
+    public List<Utulisateur> liste(){
+        return userService.liste();
+    }
+
+    @GetMapping("liste/eleve")
+    public List<Utulisateur> listEleve(){
+        return userService.findAllEleve();
+    }
+
+    @GetMapping("liste/tuteur")
+    public List<Utulisateur> listTuteur(){
+        return userService.findAllTuteur();
+    }
+
+    @GetMapping("liste/ecole")
+    public List<Utulisateur> listEcole(){
+        return userService.findAllEcole();
+    }
+
+    @GetMapping("liste/parent")
+    public List<Utulisateur> listParent(){
+        return userService.findAllParent();
+    }
+
+
+
 
     //-------------------------section de modification---------------------------------------------
 

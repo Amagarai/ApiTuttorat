@@ -31,8 +31,23 @@ public class UserServiceImp implements UserService{
 
 
     @Override
-    public List<Utulisateur> findAll() {
-        return null;
+    public List<Utulisateur> findAllEleve() {
+        return usersRepository.listerEleve();
+    }
+
+    @Override
+    public List<Utulisateur> findAllEcole() {
+        return usersRepository.listerEcole();
+    }
+
+    @Override
+    public List<Utulisateur> findAllParent() {
+        return usersRepository.listerParent();
+    }
+
+    @Override
+    public List<Utulisateur> findAllTuteur() {
+        return usersRepository.listerTuteur();
     }
 
     @Override
@@ -50,6 +65,9 @@ public class UserServiceImp implements UserService{
     public List<Tuteur> recherche(String ville, String specialite) {
         return usersRepository.findByAddresseAndSpecialite(ville, specialite);
     }
+
+    //----------------fin
+
 
     @Override
     public void supprinmer(Long id) {

@@ -12,8 +12,14 @@ public interface UserService {
 
     public List<Utulisateur> liste();
     public void supprinmer(Long id);
+
+    //--------------------section recherche---------------------------------
     public Utulisateur finById(Long id);
-    public List<Utulisateur> findAll();
+    public List<Utulisateur> findAllEleve();
+    public List<Utulisateur> findAllEcole();
+    public List<Utulisateur> findAllParent();
+    public List<Utulisateur> findAllTuteur();
+
 
     //-------------------------section modier-----------------------------------------------
     public void modify_ecole(Long id, Ecole utulisateur);

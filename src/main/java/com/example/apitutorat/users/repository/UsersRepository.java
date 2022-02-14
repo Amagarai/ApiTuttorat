@@ -10,8 +10,18 @@ import java.util.List;
 public interface UsersRepository extends JpaRepository<Utulisateur, Long> {
     public List<Tuteur> findByAddresseAndSpecialite(String ville, String specialite);
 
-    @Query("SELECT searc FROM Utulisateur searc WHERE searc.etat='ACTIVER'")
-    public List<Utulisateur> lister();
+    @Query("SELECT searc FROM Utulisateur searc WHERE searc.etat='ACTIVER' and searc.profile='ELEVE'")
+    public List<Utulisateur> listerEleve();
 
-    public List<Utulisateur> findByEtat_Activer();
+    @Query("select tuteur FROM Utulisateur  tuteur where tuteur.etat='ACTIVER' and tuteur.profile='TUTEUR'")
+    public List<Utulisateur> listerTuteur();
+
+    @Query("select parent FROM Utulisateur  parent where parent.etat='ACTIVER' and parent.profile='PARENT'")
+    public List<Utulisateur> listerParent();
+
+    @Query("select ecole FROM Utulisateur  ecole where ecole.etat='ACTIVER' and ecole.profile='TUTEUR'")
+    public List<Utulisateur> listerEcole();
+
+
+
 }
