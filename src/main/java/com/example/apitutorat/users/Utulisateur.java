@@ -25,6 +25,7 @@ public abstract class Utulisateur {
     @Enumerated(EnumType.STRING)
     private Profile profile;
     private String password;
+    @Enumerated(EnumType.STRING)
     private Etat etat = Etat.ACTIVER;
     private boolean supprime = false;
 
