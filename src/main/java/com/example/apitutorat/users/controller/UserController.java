@@ -94,33 +94,33 @@ public class UserController {
 
     //-------------------------section de modification---------------------------------------------
 
-    @PutMapping("modify/ecole/{id}/{ecole}")
-    public void modify_ecole(@PathVariable Long id, @PathVariable Ecole ecole){
+    @PutMapping("modify/ecole/{id}")
+    public void modify_ecole(@PathVariable Long id, @RequestBody Ecole ecole){
         userService.modify_ecole(id, ecole);
     }
 
-    @PutMapping("modify/tuteur/{id}/{tuteur}")
-    public void modify_tuteur(@PathVariable Long id, @PathVariable Tuteur tuteur){
+    @PutMapping("modify/tuteur/{id}")
+    public void modify_tuteur(@PathVariable Long id, @RequestBody Tuteur tuteur){
         userService.modify_tuteur(id, tuteur);
     }
 
-    @PutMapping("modify/eleve/{id}/{eleve}")
-    public void modify_eleve(@PathVariable Long id, @PathVariable Eleve eleve){
+    @PutMapping("modify/eleve/{id}")
+    public void modify_eleve(@PathVariable Long id, @RequestBody Eleve eleve){
         userService.modify_eleve(id, eleve);
     }
 
-    @PutMapping("modify/parent/{id}/{parent}")
-    public void modify_parent(@PathVariable Long id, @PathVariable Parent parent){
+    @PutMapping("modify/parent/{id}")
+    public void modify_parent(@PathVariable Long id, @RequestBody Parent parent){
         userService.modidy_parent(id, parent);
     }
 
-    @PutMapping("tuteur/dispo/{id}/{tuteur}")
-    public void disponibiliter(@PathVariable Long id, @PathVariable Tuteur tuteur){
+    @PutMapping("tuteur/dispo/{id}")
+    public void disponibiliter(@PathVariable Long id, @RequestBody Tuteur tuteur){
         userService.disponibilite(id, tuteur);
     }
 
-    @PutMapping("user/modifypass/{id}/{user}")
-    public void Modify_Password(@PathVariable Long id, @PathVariable Utulisateur user){
+    @PutMapping("user/modifypass/{id}")
+    public void Modify_Password(@PathVariable Long id, @RequestBody Utulisateur user){
         userService.modify_pass(id, user);
     }
 

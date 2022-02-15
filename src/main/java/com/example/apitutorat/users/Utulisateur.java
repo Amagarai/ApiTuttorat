@@ -1,10 +1,12 @@
 package com.example.apitutorat.users;
 
+import com.example.apitutorat.demeande.Demande;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -25,4 +27,7 @@ public abstract class Utulisateur {
     private String password;
     private Etat etat = Etat.ACTIVER;
     private boolean supprime = false;
+
+    @OneToMany(mappedBy = "envoyeur")
+    private List<Demande> demandes;
 }
