@@ -17,7 +17,7 @@ public class Demande {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String contenu;
-    private LocalDate date;
+    private LocalDate date = LocalDate.now();
     private String matiere;
 
     private boolean etat;

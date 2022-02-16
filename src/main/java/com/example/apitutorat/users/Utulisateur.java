@@ -22,10 +22,10 @@ public abstract class Utulisateur {
     private String numero;
     private String addresse;
 
-    @Enumerated(EnumType.STRING)
+
     private Profile profile;
     private String password;
-    @Enumerated(EnumType.STRING)
+
     private Etat etat = Etat.ACTIVER;
     private boolean supprime = false;
 

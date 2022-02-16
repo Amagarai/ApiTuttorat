@@ -47,4 +47,7 @@ public interface UserService {
 
     public void restore(Long id);
     public void delete(Long id);
+
+    //----------------------Login---------------------------------------------------------------
+    public List<Utulisateur> login(String numero, String password);
 }

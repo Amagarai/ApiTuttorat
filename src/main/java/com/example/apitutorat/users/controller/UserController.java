@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin
 @RequestMapping("api/")
 public class UserController {
     @Autowired
@@ -134,5 +134,12 @@ public class UserController {
     @PutMapping("restore/{id}")
     public void restorer(@PathVariable Long id){
         userService.restore(id);
+    }
+
+    //------------------------------------Login--------------------------------------------------------
+
+    @GetMapping("login/{numero}/{password}")
+    public List<Utulisateur> login(@PathVariable String numero, @PathVariable String password){
+        return userService.login(numero, password);
     }
 }

@@ -205,4 +205,12 @@ public class UserServiceImp implements UserService{
         user.setSupprime(false);
         usersRepository.save(user);
     }
+
+    //---------------------Login---------------
+
+
+    @Override
+    public List<Utulisateur> login(String numero, String password) {
+        return usersRepository.findByNumeroAndPassword(numero, password);
+    }
 }

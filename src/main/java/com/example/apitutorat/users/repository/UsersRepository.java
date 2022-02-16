@@ -1,6 +1,7 @@
 package com.example.apitutorat.users.repository;
 
 import com.example.apitutorat.users.Utulisateur;
+import com.example.apitutorat.users.model.Ecole;
 import com.example.apitutorat.users.model.Tuteur;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -25,13 +26,18 @@ public interface UsersRepository extends JpaRepository<Utulisateur, Long> {
     @Query("select ecole FROM Ecole  ecole where ecole.etat='ACTIVER' ")
     public List<Utulisateur> listerEcole();
 
-    @Query("select parent FROM Utulisateur parent where parent.etat='ACTIVER' AND parent.profile='ELEVE' or parent.profile='PARENT'")
+    @Query("select parent FROM Utulisateur parent where  parent.etat='ACTIVER' AND parent.profile='ELEVE' or parent.etat='ACTIVER' AND  parent.profile='PARENT'")
     public List<Utulisateur> listerParentEleve();
 
     //-----------------------------section pour lister les etats desactiver-------------------------------
 
     @Query("select users FROM Utulisateur  users where users.etat='DESACTIVER'")
     public List<Utulisateur> listDel();
+
+    //------------------------Login-------------------------------
+
+    public List<Utulisateur>     findByNumeroAndPassword(String numero, String password);
+    public List<Ecole> findByNumero(String numero);
 
 
 }
