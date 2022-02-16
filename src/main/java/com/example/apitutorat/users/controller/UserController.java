@@ -142,4 +142,10 @@ public class UserController {
     public List<Utulisateur> login(@PathVariable String numero, @PathVariable String password){
         return userService.login(numero, password);
     }
+
+    @PutMapping("activity/{id}")
+    public void Activity(@PathVariable Long id){
+        userService.activity(id);
+    }
+
 }

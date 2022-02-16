@@ -1,6 +1,7 @@
 package com.example.apitutorat.users;
 
 import com.example.apitutorat.demeande.Demande;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,10 +26,11 @@ public abstract class Utulisateur {
 
     private Profile profile;
     private String password;
-
+    private boolean activiter = false;
     private Etat etat = Etat.ACTIVER;
     private boolean supprime = false;
 
     @OneToMany(mappedBy = "envoyeur")
+    @JsonIgnore
     private List<Demande> demandes;
 }

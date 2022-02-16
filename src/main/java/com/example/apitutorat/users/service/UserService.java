@@ -50,4 +50,7 @@ public interface UserService {
 
     //----------------------Login---------------------------------------------------------------
     public List<Utulisateur> login(String numero, String password);
+
+    //---------------activer le en ligne lors de la connexion-----------------------------------------
+    public void activity(Long id);
 }

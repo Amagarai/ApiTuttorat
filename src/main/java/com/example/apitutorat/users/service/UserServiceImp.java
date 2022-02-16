@@ -211,6 +211,21 @@ public class UserServiceImp implements UserService{
 
     @Override
     public List<Utulisateur> login(String numero, String password) {
+
         return usersRepository.findByNumeroAndPassword(numero, password);
+    }
+
+    //-----------------------------------Actiivier la connexion-----------------
+
+    @Override
+    public void activity(Long id) {
+        Utulisateur user= usersRepository.findById(id).get();
+
+        if (user.isActiviter()){
+            user.setActiviter(false);
+        }else {
+            user.setActiviter(true);
+        }
+        usersRepository.save(user);
     }
 }
