@@ -156,4 +156,25 @@ public class UserController {
         return userService.ReinitilaiserNbreDemande(id);
     }
 
+
+    //-----------------------------------Les nombres totales------------------------------------------------
+    @GetMapping("nombre/users")
+    public int NbreTotaleUser(){
+        return userService.NbreTotaleUSer();
+    }
+
+    @GetMapping("nombre/tuteur")
+    public int NbreTotaleTuteur(){
+        return userService.NbreTotaleTuteur();
+    }
+
+    @GetMapping("nombre/eleve")
+    public int NbreTotaleEleve(){
+        return userService.NbreTotaleEleve();
+    }
+
+    @GetMapping("nombre/ecole")
+    public  int NbreTotaleEcole(){
+        return userService.NbreTotaleEcole();
+    }
 }

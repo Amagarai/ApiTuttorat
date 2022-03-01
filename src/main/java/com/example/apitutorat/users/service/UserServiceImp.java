@@ -246,4 +246,36 @@ public class UserServiceImp implements UserService{
         usersRepository.save(user);
         return  user.getOldTotale();
     }
+
+    //---------------------------------------les nombres totales-------------------------------------------
+
+    @Override
+    public int NbreTotaleUSer() {
+        List<Utulisateur> liste= usersRepository.findAll();
+        return liste.size();
+    }
+
+    @Override
+    public int NbreTotaleParent() {
+        List<Utulisateur> liste= usersRepository.listerParent();
+        return liste.size();
+    }
+
+    @Override
+    public int NbreTotaleTuteur() {
+        List<Utulisateur> list= usersRepository.listerTuteur();
+        return list.size();
+    }
+
+    @Override
+    public int NbreTotaleEleve() {
+        List<Utulisateur> list= usersRepository.listerEleve();
+        return list.size();
+    }
+
+    @Override
+    public int NbreTotaleEcole() {
+        List<Utulisateur> list= usersRepository.listerEcole();
+        return list.size();
+    }
 }

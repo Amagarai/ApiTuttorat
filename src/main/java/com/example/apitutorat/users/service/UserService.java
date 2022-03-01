@@ -57,4 +57,11 @@ public interface UserService {
 
     //------------------Obtenir le nombre de demande d'un utilistaeur---------------------------------------
     public int ReinitilaiserNbreDemande(Long id);
+
+    //---------------------------------les nombres totales--------------------------------------------------
+    public int NbreTotaleUSer();
+    public int NbreTotaleParent();
+    public int NbreTotaleTuteur();
+    public int NbreTotaleEleve();
+    public int NbreTotaleEcole();
 }
