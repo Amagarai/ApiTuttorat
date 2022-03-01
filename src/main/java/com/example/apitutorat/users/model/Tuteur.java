@@ -16,7 +16,7 @@ import javax.persistence.Entity;
 public class Tuteur extends Utulisateur {
     private String specialite;
     private String etablissement;
-    private boolean disponibilite = true;
+    private boolean disponibilite;
     private int anciennete;
     private String niveau;
 }

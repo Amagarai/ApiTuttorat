@@ -22,13 +22,14 @@ public abstract class Utulisateur {
     private String prenom;
     private String numero;
     private String addresse;
-
-
+    private String quartier;
     private Profile profile;
     private String password;
     private boolean activiter = false;
     private Etat etat = Etat.ACTIVER;
     private boolean supprime = false;
+    private int totaleNotif = 0;
+    private int oldTotale =0;
 
     @OneToMany(mappedBy = "envoyeur")
     @JsonIgnore

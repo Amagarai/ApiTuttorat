@@ -9,4 +9,7 @@ import java.util.List;
 
 public interface DemandeRepository extends JpaRepository<Demande, Long> {
     public List<Demande> findByEnvoyeurAndReceveurAndEtatIsTrue(Utulisateur envoyeur, Utulisateur receveur);
+    public List<Demande> findByReceveur(Utulisateur receveur);
+    public List<Demande> findByInitierIsTrue();
+    public List<Demande> findByReceveurAndInitierIsTrue(Utulisateur envoyeur);
 }

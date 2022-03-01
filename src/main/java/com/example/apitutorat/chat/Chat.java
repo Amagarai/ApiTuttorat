@@ -1,4 +1,4 @@
-package com.example.apitutorat.demeande;
+package com.example.apitutorat.chat;
 
 import com.example.apitutorat.users.Utulisateur;
 import lombok.AllArgsConstructor;
@@ -7,23 +7,22 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.time.LocalTime;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Demande {
+public class Chat {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String contenu;
-    private LocalDate date = LocalDate.now();
-    private String matiere;
-    private Etat etat;
-    private boolean initier;
-    @ManyToOne
+    private LocalDate date;
+    private LocalTime heure;
+
+    @OneToOne
     private Utulisateur envoyeur;
 
-    @ManyToOne
+    @OneToOne
     private Utulisateur receveur;
 }

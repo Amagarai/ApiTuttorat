@@ -1,4 +1,7 @@
 package com.example.apitutorat.users.service;
+import com.example.apitutorat.demeande.Demande;
+import com.example.apitutorat.demeande.repository.DemandeRepository;
+import com.example.apitutorat.demeande.service.DemandeService;
 import com.example.apitutorat.users.Etat;
 import com.example.apitutorat.users.Profile;
 import com.example.apitutorat.users.Utulisateur;
@@ -25,6 +28,9 @@ public class UserServiceImp implements UserService{
     EleveRepository eleveRepository;
     @Autowired
     ParentRepository parentRepository;
+
+    @Autowired
+    DemandeService demandeService;
 
 
     //----------------------------section de liste---------------------------
@@ -99,6 +105,7 @@ public class UserServiceImp implements UserService{
 
     @Override
     public Utulisateur addTuteur(Tuteur tuteur) {
+        tuteur.setDisponibilite(true);
         return usersRepository.save(tuteur);
     }
 
@@ -170,14 +177,15 @@ public class UserServiceImp implements UserService{
 
 
     @Override
-    public void disponibilite(Long id, Tuteur tuteur) {
+    public boolean disponibilite(Long id) {
         Tuteur user= tuteurRepository.findById(id).get();
-        if (!user.isDisponibilite()){
-            user.setDisponibilite(true);
-        }
         if (user.isDisponibilite()){
             user.setDisponibilite(false);
+        }else {
+            user.setDisponibilite(true);
         }
+        tuteurRepository.save(user);
+        return true;
     }
 
     @Override
@@ -227,5 +235,15 @@ public class UserServiceImp implements UserService{
             user.setActiviter(true);
         }
         usersRepository.save(user);
+    }
+
+
+    //--------------------------Obtenir le nombre de demande -----------------------------
+    @Override
+    public int ReinitilaiserNbreDemande(Long id) {
+        Utulisateur user= usersRepository.findById(id).get();
+        user.setOldTotale(user.getTotaleNotif());
+        usersRepository.save(user);
+        return  user.getOldTotale();
     }
 }

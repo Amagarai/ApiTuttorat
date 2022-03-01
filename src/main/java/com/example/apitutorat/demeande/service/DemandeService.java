@@ -7,8 +7,13 @@ import java.util.List;
 
 public interface DemandeService {
     public String sendDemande(Long from, Long to, String matiere);
-    public String acceptDemande(Long id);
+    public void InitierDemande(Long id);
     public String declinerDemande(Long id);
+    public void accepterDemande(Long id);
 
-    public List<Demande> listesDemande(Long from_id, Long to_id);
+    public List<Demande> listesAllDemande(Long from_id, Long to_id);
+    public List<Demande> GetByReceveur(Long id);
+    public List<Demande> ListeAllInitier();
+    public List<Demande> InitierByEnvoyeurAndReceveur(Long from_id);
+
 }

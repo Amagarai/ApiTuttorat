@@ -115,8 +115,8 @@ public class UserController {
     }
 
     @PutMapping("tuteur/dispo/{id}")
-    public void disponibiliter(@PathVariable Long id, @RequestBody Tuteur tuteur){
-        userService.disponibilite(id, tuteur);
+    public boolean disponibiliter(@PathVariable Long id){
+       return userService.disponibilite(id);
     }
 
     @PutMapping("user/modifypass/{id}")
@@ -146,6 +146,14 @@ public class UserController {
     @PutMapping("activity/{id}")
     public void Activity(@PathVariable Long id){
         userService.activity(id);
+    }
+
+
+    //-------------------Obtenir le nombre totale de notification-------------------------------------------
+
+    @PutMapping("notif/total/{id}")
+    public int Nb_notif(@PathVariable Long id){
+        return userService.ReinitilaiserNbreDemande(id);
     }
 
 }
