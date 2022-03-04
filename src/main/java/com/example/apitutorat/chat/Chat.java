@@ -1,6 +1,7 @@
 package com.example.apitutorat.chat;
 
-import com.example.apitutorat.users.Utulisateur;
+import com.example.apitutorat.demande.Demande;
+import com.example.apitutorat.users.Utilisateur;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,8 +22,11 @@ public class Chat {
     private LocalTime heure;
 
     @OneToOne
-    private Utulisateur envoyeur;
+    private Utilisateur envoyeur;
 
     @OneToOne
-    private Utulisateur receveur;
+    private Utilisateur receveur;
+
+    @OneToOne
+    private Demande demande;
 }

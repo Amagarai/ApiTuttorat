@@ -1,6 +1,6 @@
 package com.example.apitutorat.users.model;
 
-import com.example.apitutorat.users.Utulisateur;
+import com.example.apitutorat.users.Utilisateur;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +13,6 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Entity
 @DiscriminatorValue("PARENT")
-public class Parent extends Utulisateur {
+public class Parent extends Utilisateur {
     private String travail;
 }

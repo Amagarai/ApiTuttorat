@@ -1,11 +1,10 @@
-package com.example.apitutorat.demeande.service;
+package com.example.apitutorat.demande.service;
 
-import com.example.apitutorat.demeande.Demande;
-import com.example.apitutorat.demeande.Etat;
-import com.example.apitutorat.demeande.repository.DemandeRepository;
-import com.example.apitutorat.users.Utulisateur;
+import com.example.apitutorat.demande.Demande;
+import com.example.apitutorat.demande.Etat;
+import com.example.apitutorat.demande.repository.DemandeRepository;
+import com.example.apitutorat.users.Utilisateur;
 import com.example.apitutorat.users.repository.UsersRepository;
-import com.example.apitutorat.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,28 +21,31 @@ public class DemandeServiceImp implements DemandeService{
 
 
     @Override
-    public String sendDemande(Long from, Long to, String matiere) {
-        Utulisateur sender= usersRepository.findById(from).get();
-        Utulisateur receveur= usersRepository.findById(to).get();
+    public Demande sendDemande(Long from, Long to, String matiere) {
+        Utilisateur sender= usersRepository.findById(from).get();
+        Utilisateur receveur= usersRepository.findById(to).get();
 
         Demande demande= new Demande();
         demande.setEnvoyeur(sender);
         demande.setReceveur(receveur);
         demande.setMatiere(matiere);
-        demande.setContenu("Veut vous envoyer "+matiere+" une demante");
-        demandeRepository.save(demande);
+        demande.setContenu("Vous solicite en "+matiere);
 
         //receveur.setOldTotale(receveur.getTotaleNotif());
         receveur.setTotaleNotif(receveur.getTotaleNotif()+1);
 
-        usersRepository.save(receveur);
-        return "Demande envoyer avec succes";
+         usersRepository.save(receveur);
+        return demandeRepository.save(demande);
     }
 
     @Override
     public void InitierDemande(Long id) {
         Demande demande = demandeRepository.findById(id).get();
-        demande.setInitier(true);
+        if (demande.isInitier()){
+            demande.setInitier(false);
+        }else {
+            demande.setInitier(true);
+        }
         demandeRepository.save(demande);
     }
 
@@ -64,14 +66,14 @@ public class DemandeServiceImp implements DemandeService{
 
     @Override
     public List<Demande> listesAllDemande(Long from_id, Long to_id) {
-        Utulisateur from= usersRepository.findById(from_id).get();
-        Utulisateur to= usersRepository.findById(to_id).get();
+        Utilisateur from= usersRepository.findById(from_id).get();
+        Utilisateur to= usersRepository.findById(to_id).get();
         return demandeRepository.findByEnvoyeurAndReceveurAndEtatIsTrue(from,to);
     }
 
     @Override
     public List<Demande> GetByReceveur(Long id) {
-        Utulisateur user= usersRepository.findById(id).get();
+        Utilisateur user= usersRepository.findById(id).get();
         return demandeRepository.findByReceveur(user);
     }
 
@@ -82,8 +84,21 @@ public class DemandeServiceImp implements DemandeService{
 
     @Override
     public List<Demande> InitierByEnvoyeurAndReceveur(Long from_id) {
-        Utulisateur envoyeur= usersRepository.findById(from_id).get();
+        Utilisateur envoyeur= usersRepository.findById(from_id).get();
 
         return demandeRepository.findByReceveurAndInitierIsTrue(envoyeur);
+    }
+
+    @Override
+    public Demande DEMANDEById(Long id) {
+        Demande demande = demandeRepository.findById(id).get();
+        return demande;
+    }
+
+    @Override
+    public Demande demandeByMatiere(Long from, Long to, String matiere) {
+        Utilisateur sender= usersRepository.findById(from).get();
+        Utilisateur receveur= usersRepository.findById(to).get();
+        return demandeRepository.findByEnvoyeurAndReceveurAndMatiere(sender, receveur, matiere);
     }
 }

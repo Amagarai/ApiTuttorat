@@ -1,6 +1,6 @@
 package com.example.apitutorat.users.model;
 
-import com.example.apitutorat.users.Utulisateur;
+import com.example.apitutorat.users.Utilisateur;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import javax.persistence.Entity;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Ecole extends Utulisateur {
+public class Ecole extends Utilisateur {
     @Column(length = 24)
     private String site;
     private String email;

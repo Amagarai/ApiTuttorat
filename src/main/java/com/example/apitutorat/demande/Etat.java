@@ -1,4 +1,4 @@
-package com.example.apitutorat.demeande;
+package com.example.apitutorat.demande;
 
 public enum Etat {
     ACCEPTER, DECLINER

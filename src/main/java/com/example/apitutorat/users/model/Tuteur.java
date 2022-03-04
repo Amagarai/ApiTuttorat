@@ -1,6 +1,6 @@
 package com.example.apitutorat.users.model;
 
-import com.example.apitutorat.users.Utulisateur;
+import com.example.apitutorat.users.Utilisateur;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Tuteur extends Utulisateur {
+public class Tuteur extends Utilisateur {
     private String specialite;
     private String etablissement;
     private boolean disponibilite;

@@ -1,17 +1,16 @@
 package com.example.apitutorat.chat.repository;
 
 import com.example.apitutorat.chat.Chat;
-import com.example.apitutorat.users.Utulisateur;
+import com.example.apitutorat.demande.Demande;
+import com.example.apitutorat.users.Utilisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 public interface ChatRepository  extends JpaRepository<Chat, Long> {
-    public List<Chat> findByEnvoyeurAndReceveur(Utulisateur envoyeur, Utulisateur receveur);
-    public List<Chat> findByReceveurAndEnvoyeur(Utulisateur receveur, Utulisateur envoyeur);
-    public List<Chat> findByReceveur(Utulisateur receveur);
+    public List<Chat> findByEnvoyeurAndReceveur(Utilisateur envoyeur, Utilisateur receveur);
+    public List<Chat> findByReceveurAndEnvoyeur(Utilisateur receveur, Utilisateur envoyeur);
+    public List<Chat> findByReceveur(Utilisateur receveur);
+    public List<Chat> findByDemande(Demande demande);
 
-    public List<Chat> findByEnvoyeurAndReceveurAndReceveurAndEnvoyeur(Utulisateur envoyeur,  Utulisateur receveur, Utulisateur receveurI,  Utulisateur envoyeurI);
 }

@@ -1,6 +1,6 @@
 package com.example.apitutorat.users;
 
-import com.example.apitutorat.demeande.Demande;
+import com.example.apitutorat.demande.Demande;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +15,7 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.STRING)
-public abstract class Utulisateur {
+public abstract class Utilisateur {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;

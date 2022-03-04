@@ -1,7 +1,7 @@
-package com.example.apitutorat.demeande.controller;
+package com.example.apitutorat.demande.controller;
 
-import com.example.apitutorat.demeande.Demande;
-import com.example.apitutorat.demeande.service.DemandeService;
+import com.example.apitutorat.demande.Demande;
+import com.example.apitutorat.demande.service.DemandeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ public class DemandeController {
     DemandeService demandeService;
 
     @PostMapping("send/{from}/{to}/{matiere}")
-    public String sendDemande(@PathVariable Long from, @PathVariable Long to, @PathVariable String matiere){
+    public Demande sendDemande(@PathVariable Long from, @PathVariable Long to, @PathVariable String matiere){
         return demandeService.sendDemande(from, to, matiere);
     }
 
@@ -47,5 +47,15 @@ public class DemandeController {
     @GetMapping("initier/{from}")
     public List<Demande> GetListeInitierByEnvoyeurAndReceveur(@PathVariable Long from){
         return demandeService.InitierByEnvoyeurAndReceveur(from);
+    }
+
+    @GetMapping("/{id}")
+    public Demande demandeById(@PathVariable Long id){
+        return demandeService.DEMANDEById(id);
+    }
+
+    @GetMapping("ifexist/{from}/{to}/{matiere}")
+    public Demande ifExist(@PathVariable Long from, @PathVariable Long to, @PathVariable String matiere){
+        return demandeService.demandeByMatiere(from, to, matiere);
     }
 }

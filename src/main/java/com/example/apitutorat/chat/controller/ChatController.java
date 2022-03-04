@@ -2,7 +2,6 @@ package com.example.apitutorat.chat.controller;
 
 import com.example.apitutorat.chat.Chat;
 import com.example.apitutorat.chat.service.ChatServiceImp;
-import com.example.apitutorat.users.Utulisateur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +14,9 @@ public class ChatController {
     @Autowired
     ChatServiceImp chatServiceImp;
 
-    @PostMapping("add/{from}/{to}")
-    public Chat addChat( @RequestBody Chat chat, @PathVariable Long from, @PathVariable Long to){
-        return chatServiceImp.addChat(chat, from, to);
+    @PostMapping("add/{from}/{to}/{demande_id}")
+    public Chat addChat( @RequestBody Chat chat, @PathVariable Long from, @PathVariable Long to, @PathVariable Long demande_id){
+        return chatServiceImp.addChat(chat, from, to, demande_id);
     }
 
     @GetMapping("liste/{from}/{to}")
@@ -28,5 +27,10 @@ public class ChatController {
     @GetMapping("trouver/{id}")
     public List<Chat> trouver(@PathVariable Long id){
         return chatServiceImp.triuver(id);
+    }
+
+    @GetMapping("liste/{id}")
+    public List<Chat> ChatByListe(@PathVariable Long id){
+        return chatServiceImp.ChatByDemande(id);
     }
 }

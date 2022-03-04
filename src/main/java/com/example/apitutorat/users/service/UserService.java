@@ -1,6 +1,6 @@
 package com.example.apitutorat.users.service;
 
-import com.example.apitutorat.users.Utulisateur;
+import com.example.apitutorat.users.Utilisateur;
 import com.example.apitutorat.users.model.Ecole;
 import com.example.apitutorat.users.model.Eleve;
 import com.example.apitutorat.users.model.Parent;
@@ -10,17 +10,17 @@ import java.util.List;
 
 public interface UserService {
 
-    public List<Utulisateur> liste();
+    public List<Utilisateur> liste();
 
-    public List<Utulisateur> listerParentEleve();
+    public List<Utilisateur> listerParentEleve();
 
     //--------------------section Liste---------------------------------
-    public Utulisateur finById(Long id);
-    public List<Utulisateur> findAllEleve();
-    public List<Utulisateur> findAllEcole();
-    public List<Utulisateur> findAllParent();
-    public List<Utulisateur> findAllTuteur();
-    public List<Utulisateur> FindAllDel();
+    public Utilisateur finById(Long id);
+    public List<Utilisateur> findAllEleve();
+    public List<Utilisateur> findAllEcole();
+    public List<Utilisateur> findAllParent();
+    public List<Utilisateur> findAllTuteur();
+    public List<Utilisateur> FindAllDel();
     public List<Tuteur> recherche(String ville, String specialite);
 
     //-------------------------section modier-----------------------------------------------
@@ -29,17 +29,17 @@ public interface UserService {
     public void modify_eleve(Long id, Eleve eleve);
     public void modidy_parent(Long id, Parent  parent);
     public boolean disponibilite(Long id);
-    public void modify_pass(Long id, Utulisateur utulisateur);
+    public void modify_pass(Long id, Utilisateur utilisateur);
 
 
     //---------fin
 
     //------------------Section ajout-------------------------------------------------------
 
-    public Utulisateur addEleve(Eleve eleve);
-    public Utulisateur addEcole(Ecole ecole);
-    public Utulisateur addParent(Parent parent);
-    public Utulisateur addTuteur(Tuteur tuteur);
+    public Utilisateur addEleve(Eleve eleve);
+    public Utilisateur addEcole(Ecole ecole);
+    public Utilisateur addParent(Parent parent);
+    public Utilisateur addTuteur(Tuteur tuteur);
 
     //----fin
 
@@ -49,7 +49,7 @@ public interface UserService {
     public void delete(Long id);
 
     //----------------------Login---------------------------------------------------------------
-    public List<Utulisateur> login(String numero, String password);
+    public List<Utilisateur> login(String numero, String password);
 
     //---------------activer le en ligne lors de la connexion-----------------------------------------
     public void activity(Long id);

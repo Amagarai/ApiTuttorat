@@ -1,13 +1,13 @@
-package com.example.apitutorat.demeande;
+package com.example.apitutorat.demande;
 
-import com.example.apitutorat.users.Utulisateur;
+import com.example.apitutorat.chat.Chat;
+import com.example.apitutorat.users.Utilisateur;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Data
@@ -22,8 +22,9 @@ public class Demande {
     private Etat etat;
     private boolean initier;
     @ManyToOne
-    private Utulisateur envoyeur;
+    private Utilisateur envoyeur;
 
     @ManyToOne
-    private Utulisateur receveur;
+    private Utilisateur receveur;
+
 }

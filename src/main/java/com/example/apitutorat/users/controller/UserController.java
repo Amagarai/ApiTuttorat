@@ -1,6 +1,6 @@
 package com.example.apitutorat.users.controller;
 
-import com.example.apitutorat.users.Utulisateur;
+import com.example.apitutorat.users.Utilisateur;
 import com.example.apitutorat.users.model.Ecole;
 import com.example.apitutorat.users.model.Eleve;
 import com.example.apitutorat.users.model.Parent;
@@ -20,22 +20,22 @@ public class UserController {
 
     //--------------------------section d'ajout--------------------------------
     @PostMapping("add/ecole")
-    public Utulisateur addEcole(@RequestBody Ecole ecole){
+    public Utilisateur addEcole(@RequestBody Ecole ecole){
         return userService.addEcole(ecole);
     }
 
     @PostMapping("add/eleve")
-    public Utulisateur addEleve(@RequestBody Eleve eleve){
+    public Utilisateur addEleve(@RequestBody Eleve eleve){
         return userService.addEleve(eleve);
     }
 
     @PostMapping("add/parent")
-    public Utulisateur addParent(@RequestBody Parent parent){
+    public Utilisateur addParent(@RequestBody Parent parent){
         return userService.addParent(parent);
     }
 
     @PostMapping("add/tuteur")
-    public Utulisateur addTuteur(@RequestBody Tuteur tuteur){
+    public Utilisateur addTuteur(@RequestBody Tuteur tuteur){
         return userService.addTuteur(tuteur);
     }
 
@@ -50,42 +50,42 @@ public class UserController {
     }
 
     @GetMapping("liste")
-    public List<Utulisateur> liste(){
+    public List<Utilisateur> liste(){
         return userService.liste();
     }
 
     @GetMapping("liste/eleve")
-    public List<Utulisateur> listEleve(){
+    public List<Utilisateur> listEleve(){
         return userService.findAllEleve();
     }
 
     @GetMapping("liste/tuteur")
-    public List<Utulisateur> listTuteur(){
+    public List<Utilisateur> listTuteur(){
         return userService.findAllTuteur();
     }
 
     @GetMapping("liste/ecole")
-    public List<Utulisateur> listEcole(){
+    public List<Utilisateur> listEcole(){
         return userService.findAllEcole();
     }
 
     @GetMapping("liste/parent")
-    public List<Utulisateur> listParent(){
+    public List<Utilisateur> listParent(){
         return userService.findAllParent();
     }
 
     @GetMapping("trouver/{id}")
-    public Utulisateur findByID(@PathVariable Long id){
+    public Utilisateur findByID(@PathVariable Long id){
         return userService.finById(id);
     }
 
     @GetMapping("liste/del")
-    public List<Utulisateur> findAllDel(){
+    public List<Utilisateur> findAllDel(){
         return userService.FindAllDel();
     }
 
     @GetMapping("liste/users")
-    public List<Utulisateur> listerParentEleve(){
+    public List<Utilisateur> listerParentEleve(){
         return userService.listerParentEleve();
     }
 
@@ -120,7 +120,7 @@ public class UserController {
     }
 
     @PutMapping("user/modifypass/{id}")
-    public void Modify_Password(@PathVariable Long id, @RequestBody Utulisateur user){
+    public void Modify_Password(@PathVariable Long id, @RequestBody Utilisateur user){
         userService.modify_pass(id, user);
     }
 
@@ -139,7 +139,7 @@ public class UserController {
     //------------------------------------Login--------------------------------------------------------
 
     @GetMapping("login/{numero}/{password}")
-    public List<Utulisateur> login(@PathVariable String numero, @PathVariable String password){
+    public List<Utilisateur> login(@PathVariable String numero, @PathVariable String password){
         return userService.login(numero, password);
     }
 

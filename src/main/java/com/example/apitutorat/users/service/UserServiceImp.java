@@ -1,10 +1,7 @@
 package com.example.apitutorat.users.service;
-import com.example.apitutorat.demeande.Demande;
-import com.example.apitutorat.demeande.repository.DemandeRepository;
-import com.example.apitutorat.demeande.service.DemandeService;
+import com.example.apitutorat.demande.service.DemandeService;
 import com.example.apitutorat.users.Etat;
-import com.example.apitutorat.users.Profile;
-import com.example.apitutorat.users.Utulisateur;
+import com.example.apitutorat.users.Utilisateur;
 import com.example.apitutorat.users.model.Ecole;
 import com.example.apitutorat.users.model.Eleve;
 import com.example.apitutorat.users.model.Parent;
@@ -37,38 +34,38 @@ public class UserServiceImp implements UserService{
 
 
     @Override
-    public List<Utulisateur> findAllEleve() {
+    public List<Utilisateur> findAllEleve() {
         return usersRepository.listerEleve();
     }
 
     @Override
-    public List<Utulisateur> findAllEcole() {
+    public List<Utilisateur> findAllEcole() {
         return usersRepository.listerEcole();
     }
 
     @Override
-    public List<Utulisateur> findAllParent() {
+    public List<Utilisateur> findAllParent() {
         return usersRepository.listerParent();
     }
 
     @Override
-    public List<Utulisateur> findAllTuteur() {
+    public List<Utilisateur> findAllTuteur() {
         return usersRepository.listerTuteur();
     }
 
     @Override
-    public Utulisateur finById(Long id) {
+    public Utilisateur finById(Long id) {
         return usersRepository.findById(id).get();
     }
 
     @Override
-    public List<Utulisateur> liste() {
+    public List<Utilisateur> liste() {
 
         return usersRepository.findAll();
     }
 
     @Override
-    public List<Utulisateur> listerParentEleve() {
+    public List<Utilisateur> listerParentEleve() {
         return usersRepository.listerParentEleve();
     }
 
@@ -79,7 +76,7 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public List<Utulisateur> FindAllDel() {
+    public List<Utilisateur> FindAllDel() {
         return usersRepository.listDel();
     }
 
@@ -89,22 +86,22 @@ public class UserServiceImp implements UserService{
     //--------------------------------------section pour ajouter les utilisateurs----------------------------------------------
 
     @Override
-    public Utulisateur addEleve(Eleve eleve) {
+    public Utilisateur addEleve(Eleve eleve) {
         return usersRepository.save(eleve);
     }
 
     @Override
-    public Utulisateur addEcole(Ecole ecole) {
+    public Utilisateur addEcole(Ecole ecole) {
         return usersRepository.save(ecole);
     }
 
     @Override
-    public Utulisateur addParent(Parent parent) {
+    public Utilisateur addParent(Parent parent) {
         return usersRepository.save(parent);
     }
 
     @Override
-    public Utulisateur addTuteur(Tuteur tuteur) {
+    public Utilisateur addTuteur(Tuteur tuteur) {
         tuteur.setDisponibilite(true);
         return usersRepository.save(tuteur);
     }
@@ -189,9 +186,9 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public void modify_pass(Long id, Utulisateur utulisateur) {
-        Utulisateur user= usersRepository.findById(id).get();
-        user.setPassword(utulisateur.getPassword());
+    public void modify_pass(Long id, Utilisateur utilisateur) {
+        Utilisateur user= usersRepository.findById(id).get();
+        user.setPassword(utilisateur.getPassword());
         usersRepository.save(user);
     }
 
@@ -200,15 +197,15 @@ public class UserServiceImp implements UserService{
 
     @Override
     public void delete(Long id) {
-        Utulisateur utulisateur= usersRepository.findById(id).get();
-        utulisateur.setEtat(Etat.DESACTIVER);
-        utulisateur.setSupprime(true);
-        usersRepository.save(utulisateur);
+        Utilisateur utilisateur = usersRepository.findById(id).get();
+        utilisateur.setEtat(Etat.DESACTIVER);
+        utilisateur.setSupprime(true);
+        usersRepository.save(utilisateur);
     }
 
     @Override
     public void restore(Long id) {
-        Utulisateur user= usersRepository.findById(id).get();
+        Utilisateur user= usersRepository.findById(id).get();
         user.setEtat(Etat.ACTIVER);
         user.setSupprime(false);
         usersRepository.save(user);
@@ -218,7 +215,7 @@ public class UserServiceImp implements UserService{
 
 
     @Override
-    public List<Utulisateur> login(String numero, String password) {
+    public List<Utilisateur> login(String numero, String password) {
 
         return usersRepository.findByNumeroAndPassword(numero, password);
     }
@@ -227,7 +224,7 @@ public class UserServiceImp implements UserService{
 
     @Override
     public void activity(Long id) {
-        Utulisateur user= usersRepository.findById(id).get();
+        Utilisateur user= usersRepository.findById(id).get();
 
         if (user.isActiviter()){
             user.setActiviter(false);
@@ -241,7 +238,7 @@ public class UserServiceImp implements UserService{
     //--------------------------Obtenir le nombre de demande -----------------------------
     @Override
     public int ReinitilaiserNbreDemande(Long id) {
-        Utulisateur user= usersRepository.findById(id).get();
+        Utilisateur user= usersRepository.findById(id).get();
         user.setOldTotale(user.getTotaleNotif());
         usersRepository.save(user);
         return  user.getOldTotale();
@@ -251,31 +248,31 @@ public class UserServiceImp implements UserService{
 
     @Override
     public int NbreTotaleUSer() {
-        List<Utulisateur> liste= usersRepository.findAll();
+        List<Utilisateur> liste= usersRepository.findAll();
         return liste.size();
     }
 
     @Override
     public int NbreTotaleParent() {
-        List<Utulisateur> liste= usersRepository.listerParent();
+        List<Utilisateur> liste= usersRepository.listerParent();
         return liste.size();
     }
 
     @Override
     public int NbreTotaleTuteur() {
-        List<Utulisateur> list= usersRepository.listerTuteur();
+        List<Utilisateur> list= usersRepository.listerTuteur();
         return list.size();
     }
 
     @Override
     public int NbreTotaleEleve() {
-        List<Utulisateur> list= usersRepository.listerEleve();
+        List<Utilisateur> list= usersRepository.listerEleve();
         return list.size();
     }
 
     @Override
     public int NbreTotaleEcole() {
-        List<Utulisateur> list= usersRepository.listerEcole();
+        List<Utilisateur> list= usersRepository.listerEcole();
         return list.size();
     }
 }
