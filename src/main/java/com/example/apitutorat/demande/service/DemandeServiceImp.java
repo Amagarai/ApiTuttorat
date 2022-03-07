@@ -90,6 +90,12 @@ public class DemandeServiceImp implements DemandeService{
     }
 
     @Override
+    public List<Demande> InitierByReceveurAndEnvoyeur(Long to_id) {
+        Utilisateur receveur = usersRepository.findById(to_id).get();
+        return  demandeRepository.findByEnvoyeurAndInitierIsTrue(receveur);
+    }
+
+    @Override
     public Demande DEMANDEById(Long id) {
         Demande demande = demandeRepository.findById(id).get();
         return demande;

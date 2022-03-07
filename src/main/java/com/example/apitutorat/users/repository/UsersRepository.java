@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface UsersRepository extends JpaRepository<Utilisateur, Long> {
-    public List<Tuteur> findByAddresseAndSpecialite(String ville, String specialite);
+    public List<Tuteur> findByAddresseAndSpecialiteAndNiveau(String ville, String specialite, String niveau);
 
 
     //------------------section pour lister les utilisateurs-------------------------------------

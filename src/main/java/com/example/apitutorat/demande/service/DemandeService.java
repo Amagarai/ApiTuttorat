@@ -14,6 +14,7 @@ public interface DemandeService {
     public List<Demande> GetByReceveur(Long id);
     public List<Demande> ListeAllInitier();
     public List<Demande> InitierByEnvoyeurAndReceveur(Long from_id);
+    public List<Demande> InitierByReceveurAndEnvoyeur(Long to_id);
     public Demande DEMANDEById(Long id);
     public Demande demandeByMatiere(Long from, Long to, String matiere);
 

@@ -71,8 +71,8 @@ public class UserServiceImp implements UserService{
 
 
     @Override
-    public List<Tuteur> recherche(String ville, String specialite) {
-        return usersRepository.findByAddresseAndSpecialite(ville, specialite);
+    public List<Tuteur> recherche(String ville, String specialite, String niveau) {
+        return usersRepository.findByAddresseAndSpecialiteAndNiveau(ville, specialite, niveau);
     }
 
     @Override

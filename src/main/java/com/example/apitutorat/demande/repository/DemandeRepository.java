@@ -11,5 +11,6 @@ public interface DemandeRepository extends JpaRepository<Demande, Long> {
     public List<Demande> findByReceveur(Utilisateur receveur);
     public List<Demande> findByInitierIsTrue();
     public List<Demande> findByReceveurAndInitierIsTrue(Utilisateur envoyeur);
+    public List<Demande> findByEnvoyeurAndInitierIsTrue(Utilisateur receveur );
     public Demande findByEnvoyeurAndReceveurAndMatiere(Utilisateur envoyeur, Utilisateur receveur, String matiere);
 }

@@ -21,7 +21,7 @@ public interface UserService {
     public List<Utilisateur> findAllParent();
     public List<Utilisateur> findAllTuteur();
     public List<Utilisateur> FindAllDel();
-    public List<Tuteur> recherche(String ville, String specialite);
+    public List<Tuteur> recherche(String ville, String specialite, String niveau);
 
     //-------------------------section modier-----------------------------------------------
     public void modify_ecole(Long id, Ecole utulisateur);

@@ -8,7 +8,12 @@ import com.example.apitutorat.users.model.Tuteur;
 import com.example.apitutorat.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.net.FileNameMap;
 import java.util.List;
 
 @RestController
@@ -17,6 +22,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    ServletContext context;
 
     //--------------------------section d'ajout--------------------------------
     @PostMapping("add/ecole")
@@ -44,9 +52,9 @@ public class UserController {
 
     //------------------------section de recherche---------------------------------
 
-    @GetMapping("search/{ville}/{specialite}")
-    public List<Tuteur> recherche(@PathVariable String ville, @PathVariable String specialite){
-        return userService.recherche(ville, specialite);
+    @GetMapping("search/{ville}/{specialite}/{niveau}")
+    public List<Tuteur> recherche(@PathVariable String ville, @PathVariable String specialite, @PathVariable String niveau){
+        return userService.recherche(ville, specialite, niveau);
     }
 
     @GetMapping("liste")
