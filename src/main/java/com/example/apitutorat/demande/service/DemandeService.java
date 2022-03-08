@@ -7,8 +7,8 @@ import java.util.List;
 public interface DemandeService {
     public Demande sendDemande(Long from, Long to, String matiere);
     public void InitierDemande(Long id);
-    public String declinerDemande(Long id);
-    public void accepterDemande(Long id);
+    public Demande declinerDemande(Long id);
+    public Demande accepterDemande(Long id);
 
     public List<Demande> listesAllDemande(Long from_id, Long to_id);
     public List<Demande> GetByReceveur(Long id);

@@ -50,18 +50,17 @@ public class DemandeServiceImp implements DemandeService{
     }
 
     @Override
-    public String declinerDemande(Long id) {
+    public Demande declinerDemande(Long id) {
         Demande demande = demandeRepository.findById(id).get();
         demande.setEtat(Etat.DECLINER);
-        demandeRepository.save(demande);
-        return "Demande Refuser";
+       return demandeRepository.save(demande);
     }
 
     @Override
-    public void accepterDemande(Long id) {
+    public Demande accepterDemande(Long id) {
         Demande demande= demandeRepository.findById(id).get();
         demande.setEtat(Etat.ACCEPTER);
-        demandeRepository.save(demande);
+        return demandeRepository.save(demande);
     }
 
     @Override

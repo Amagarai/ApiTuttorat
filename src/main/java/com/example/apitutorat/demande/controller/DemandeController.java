@@ -30,13 +30,13 @@ public class DemandeController {
     }
 
     @PutMapping("decliner/{id}")
-    public void DeclinerDemande(@PathVariable Long id){
-        demandeService.declinerDemande(id);
+    public Demande DeclinerDemande(@PathVariable Long id){
+       return demandeService.declinerDemande(id);
     }
 
     @PutMapping("aprouve/{id}")
-    public void AccepterDemande(@PathVariable Long id){
-        demandeService.accepterDemande(id);
+    public Demande AccepterDemande(@PathVariable Long id){
+       return demandeService.accepterDemande(id);
     }
 
     @GetMapping("initier")
