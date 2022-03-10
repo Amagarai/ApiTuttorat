@@ -97,6 +97,11 @@ public class UserController {
         return userService.listerParentEleve();
     }
 
+    //------liste des tuteurs par villes---
+    @GetMapping("tuteur/{ville}")
+    public List<Tuteur> TrouverParVille(@PathVariable String ville){
+        return userService.TrouverParVille(ville);
+    }
 
 
 

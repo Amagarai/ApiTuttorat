@@ -1,5 +1,6 @@
 package com.example.apitutorat.users.repository;
 
+import com.example.apitutorat.users.Etat;
 import com.example.apitutorat.users.Utilisateur;
 import com.example.apitutorat.users.model.Ecole;
 import com.example.apitutorat.users.model.Tuteur;
@@ -39,6 +40,12 @@ public interface UsersRepository extends JpaRepository<Utilisateur, Long> {
 
     public List<Utilisateur>     findByNumeroAndPassword(String numero, String password);
     public List<Ecole> findByNumero(String numero);
+
+    //------fin
+
+    //--------------------liste des tuteurs selon leur ville et leur etats---------------------------------
+
+    public List<Tuteur> findByAddresseAndEtat(String addresse, Etat etat);
 
 
 }

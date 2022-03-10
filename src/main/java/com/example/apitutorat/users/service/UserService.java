@@ -30,7 +30,7 @@ public interface UserService {
     public void modidy_parent(Long id, Parent  parent);
     public boolean disponibilite(Long id);
     public void modify_pass(Long id, Utilisateur utilisateur);
-
+    public List<Tuteur> TrouverParVille(String adresse);
 
     //---------fin
 
@@ -64,4 +64,5 @@ public interface UserService {
     public int NbreTotaleTuteur();
     public int NbreTotaleEleve();
     public int NbreTotaleEcole();
+
 }

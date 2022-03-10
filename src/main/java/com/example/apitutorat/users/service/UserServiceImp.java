@@ -80,6 +80,14 @@ public class UserServiceImp implements UserService{
         return usersRepository.listDel();
     }
 
+    //-------liste des tuteurs par ville-------
+
+    @Override
+    public List<Tuteur> TrouverParVille(String adresse) {
+        return usersRepository.findByAddresseAndEtat(adresse, Etat.ACTIVER);
+    }
+
+
     //----------------fin
 
 
