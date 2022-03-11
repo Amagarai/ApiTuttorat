@@ -26,7 +26,7 @@ public class ChatController {
 
     @GetMapping("trouver/{id}")
     public List<Chat> trouver(@PathVariable Long id){
-        return chatServiceImp.triuver(id);
+        return chatServiceImp.findByEnvoyeurAndReceveur(id);
     }
 
     @GetMapping("liste/{id}")

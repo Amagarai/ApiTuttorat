@@ -18,11 +18,13 @@ import java.util.List;
 public abstract class Utilisateur {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private byte[] photo;
     private String nom;
     private String prenom;
     private String numero;
     private String addresse;
     private String quartier;
+    @Enumerated(EnumType.STRING)
     private Profile profile;
     private String password;
     private boolean activiter = false;
@@ -31,7 +33,6 @@ public abstract class Utilisateur {
     private boolean supprime = false;
     private int totaleNotif = 0;
     private int oldTotale =0;
-    private String photo;
 
     @OneToMany(mappedBy = "envoyeur")
     @JsonIgnore

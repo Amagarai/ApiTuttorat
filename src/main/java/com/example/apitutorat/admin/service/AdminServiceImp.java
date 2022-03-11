@@ -5,6 +5,8 @@ import com.example.apitutorat.admin.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AdminServiceImp implements AdminService{
 
@@ -17,7 +19,7 @@ public class AdminServiceImp implements AdminService{
     }
 
     @Override
-    public Administrateur Connextion(String login, String password) {
+    public Administrateur login(String login, String password) {
         return adminRepository.findByLoginAndPassword(login, password);
     }
 }

@@ -175,6 +175,10 @@ public class UserController {
     public int NbreTotaleUser(){
         return userService.NbreTotaleUSer();
     }
+    @GetMapping("nombre/parent")
+    public  int NbreTotaleParent(){
+        return userService.NbreTotaleParent();
+    }
 
     @GetMapping("nombre/tuteur")
     public int NbreTotaleTuteur(){

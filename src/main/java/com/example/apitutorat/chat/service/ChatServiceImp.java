@@ -39,7 +39,7 @@ public class ChatServiceImp implements ChatService{
     }
 
     @Override
-    public List<Chat> triuver(Long receveur) {
+    public List<Chat> findByEnvoyeurAndReceveur(Long receveur) {
         Utilisateur utilisateur = usersRepository.findById(receveur).get();
         return chatRepository.findByReceveur(utilisateur);
     }
