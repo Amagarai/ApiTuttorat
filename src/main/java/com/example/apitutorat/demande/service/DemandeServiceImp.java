@@ -3,11 +3,15 @@ package com.example.apitutorat.demande.service;
 import com.example.apitutorat.demande.Demande;
 import com.example.apitutorat.demande.Etat;
 import com.example.apitutorat.demande.repository.DemandeRepository;
+import com.example.apitutorat.notification.Notification;
+import com.example.apitutorat.notification.repository.NotificationRepository;
 import com.example.apitutorat.users.Utilisateur;
 import com.example.apitutorat.users.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -19,6 +23,9 @@ public class DemandeServiceImp implements DemandeService{
     @Autowired
     UsersRepository usersRepository;
 
+    @Autowired
+    NotificationRepository notificationRepository;
+
 
     @Override
     public Demande sendDemande(Long from, Long to, String matiere) {
@@ -29,6 +36,7 @@ public class DemandeServiceImp implements DemandeService{
         demande.setEnvoyeur(sender);
         demande.setReceveur(receveur);
         demande.setMatiere(matiere);
+        demande.setDate(LocalDate.now());
         demande.setContenu("Vous solicite en "+matiere);
 
         //receveur.setOldTotale(receveur.getTotaleNotif());
@@ -45,6 +53,15 @@ public class DemandeServiceImp implements DemandeService{
             demande.setInitier(false);
         }else {
             demande.setInitier(true);
+        //***********---*-*-****-*-*-**-*-*-*-*-*add notification
+//*-*-*-*-*-*-*-*-*-*-*-l'ensemble de ses methodes permettent d'envoyer une notifier lorsqu'on inicitie une demande*******
+            Notification notification = new Notification();
+            notification.setHeure(LocalTime.now());
+            notification.setDate(LocalDate.now());
+            notification.setContenu(demande.getReceveur().getPrenom()+" "+demande.getReceveur().getNom()+" a initié votre demade");
+            notification.setEnvoyeur(demande.getReceveur());
+            notification.setReceveur(demande.getEnvoyeur());
+            notificationRepository.save(notification);
         }
         demandeRepository.save(demande);
     }
@@ -53,6 +70,7 @@ public class DemandeServiceImp implements DemandeService{
     public Demande declinerDemande(Long id) {
         Demande demande = demandeRepository.findById(id).get();
         demande.setEtat(Etat.DECLINER);
+
        return demandeRepository.save(demande);
     }
 
@@ -60,15 +78,51 @@ public class DemandeServiceImp implements DemandeService{
     public Demande accepterDemande(Long id) {
         Demande demande= demandeRepository.findById(id).get();
         demande.setEtat(Etat.ACCEPTER);
+        demande.setAcceptDate(LocalDate.now());
+        demande.setAcceptHeure(LocalTime.now());
+
+        //***********---*-*-****-*-*-**-*-*-*-*-*add notification
+//*-*-*-*-*-*-*-*-*-*-*-l'ensemble de ses methodes permettent d'envoyer une notifier lorsqu'on accepte une demande*******
+        Notification notification = new Notification();
+        notification.setHeure(LocalTime.now());
+        notification.setDate(LocalDate.now());
+        notification.setContenu(demande.getReceveur().getPrenom()+" "+demande.getReceveur().getNom()+" a accepter votre demade");
+        notification.setEnvoyeur(demande.getReceveur());
+        notification.setReceveur(demande.getEnvoyeur());
+        notificationRepository.save(notification);
+
         return demandeRepository.save(demande);
     }
 
+    //---------------liste des deamndes-------------------------------
     @Override
     public List<Demande> listesAllDemande(Long from_id, Long to_id) {
         Utilisateur from= usersRepository.findById(from_id).get();
         Utilisateur to= usersRepository.findById(to_id).get();
         return demandeRepository.findByEnvoyeurAndReceveurAndEtatIsTrue(from,to);
     }
+
+    @Override
+    public List<Demande> ListDemandeRejeter(Long id) {
+        Utilisateur receveur = usersRepository.findById(id).get();
+        return demandeRepository.findByReceveurAndEtat(receveur, Etat.DECLINER );
+    }
+
+    @Override
+    public List<Demande> ListDemandeAccepter(Long id) {
+        Utilisateur receveur = usersRepository.findById(id).get();
+        return demandeRepository.findByReceveurAndEtat(receveur, Etat.ACCEPTER);
+    }
+
+    //------------fin
+
+    //----------supprimer demandes-------
+    @Override
+    public Demande SupprimerDemande(Long id) {
+        return null;
+    }
+
+    //-----------------fin
 
     @Override
     public List<Demande> GetByReceveur(Long id) {

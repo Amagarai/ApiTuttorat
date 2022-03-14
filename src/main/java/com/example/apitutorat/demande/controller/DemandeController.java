@@ -53,6 +53,17 @@ public class DemandeController {
     public List<Demande> GetListeInitierByReceveurAndEnvoyeur(@PathVariable Long from){
         return demandeService.InitierByReceveurAndEnvoyeur(from);
     }
+    //--------obtenir la liste des demandes decliner et accepter-------------------------
+
+    @GetMapping("list/decliner/{id}")
+    public List<Demande> GetDemandeDecliner(@PathVariable Long id){
+        return demandeService.ListDemandeRejeter(id);
+    }
+
+    @GetMapping("list/accepter/{id}")
+    public List<Demande> GetDemandeAccepter(@PathVariable Long id){
+        return demandeService.ListDemandeAccepter(id);
+    }
 
 
     @GetMapping("/{id}")

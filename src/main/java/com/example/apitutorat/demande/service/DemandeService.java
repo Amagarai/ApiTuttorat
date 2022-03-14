@@ -1,6 +1,8 @@
 package com.example.apitutorat.demande.service;
 
 import com.example.apitutorat.demande.Demande;
+import com.example.apitutorat.users.Etat;
+import com.example.apitutorat.users.Utilisateur;
 
 import java.util.List;
 
@@ -17,5 +19,10 @@ public interface DemandeService {
     public List<Demande> InitierByReceveurAndEnvoyeur(Long to_id);
     public Demande DEMANDEById(Long id);
     public Demande demandeByMatiere(Long from, Long to, String matiere);
+
+    public List<Demande> ListDemandeRejeter(Long id);
+    public List<Demande> ListDemandeAccepter(Long id);
+    public Demande SupprimerDemande(Long id);
+
 
 }
