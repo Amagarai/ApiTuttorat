@@ -1,11 +1,22 @@
 package com.example.apitutorat.notification.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.apitutorat.notification.Notification;
+import com.example.apitutorat.notification.services.NotificationServiceImp;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/notification")
+@RequestMapping("api/notification/")
 public class NotificationController {
+
+    @Autowired
+    NotificationServiceImp notificationServiceImp;
+
+    @GetMapping("liste/{id}")
+    public List<Notification> ListNotification(@PathVariable Long id){
+        return notificationServiceImp.GetByReceveur(id);
+    }
 }
