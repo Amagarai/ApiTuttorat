@@ -194,10 +194,10 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public void modify_pass(Long id, Utilisateur utilisateur) {
+    public Utilisateur modify_pass(Long id, Utilisateur utilisateur) {
         Utilisateur user= usersRepository.findById(id).get();
         user.setPassword(utilisateur.getPassword());
-        usersRepository.save(user);
+       return usersRepository.save(user);
     }
 
     //---------------------section delete et restorer--------------------------------------------------------------

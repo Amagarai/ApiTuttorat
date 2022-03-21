@@ -29,7 +29,7 @@ public interface UserService {
     public void modify_eleve(Long id, Eleve eleve);
     public void modidy_parent(Long id, Parent  parent);
     public boolean disponibilite(Long id);
-    public void modify_pass(Long id, Utilisateur utilisateur);
+    public Utilisateur modify_pass(Long id, Utilisateur utilisateur);
     public List<Tuteur> TrouverParVille(String adresse);
 
     //---------fin

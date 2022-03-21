@@ -32,8 +32,4 @@ public abstract class Utilisateur {
     private int totaleNotif = 0;
     private int oldTotale =0;
     private String photo;
-
-    @OneToMany(mappedBy = "envoyeur")
-    @JsonIgnore
-    private List<Demande> demandes;
 }

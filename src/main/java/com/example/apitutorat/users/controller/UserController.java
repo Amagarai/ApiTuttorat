@@ -133,8 +133,8 @@ public class UserController {
     }
 
     @PutMapping("user/modifypass/{id}")
-    public void Modify_Password(@PathVariable Long id, @RequestBody Utilisateur user){
-        userService.modify_pass(id, user);
+    public Utilisateur Modify_Password(@PathVariable Long id, @RequestBody Utilisateur user){
+       return userService.modify_pass(id, user);
     }
 
 
