@@ -29,4 +29,9 @@ public class ClasseController {
     public Classe classeById(@PathVariable Long id){
         return this.classeServiceImp.classeById(id);
     }
+
+    @PutMapping("update/{id}")
+    public Classe update(@RequestBody Classe classe, @PathVariable Long id){
+        return classeServiceImp.updateClasse(classe, id);
+    }
 }

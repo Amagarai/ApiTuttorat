@@ -40,4 +40,12 @@ public class ClasseServiceImp implements ClasseService{
     public Classe classeById(Long id) {
         return classeRepository.findById(id).get();
     }
+
+    @Override
+    public Classe updateClasse(Classe classe, Long id) {
+        Classe existClasse = classeRepository.findById(id).get();
+        existClasse.setEleves(classe.getEleves());
+        classeRepository.save(existClasse);
+        return null;
+    }
 }
