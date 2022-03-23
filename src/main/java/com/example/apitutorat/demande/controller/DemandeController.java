@@ -75,4 +75,26 @@ public class DemandeController {
     public Demande ifExist(@PathVariable Long from, @PathVariable Long to, @PathVariable String matiere){
         return demandeService.demandeByMatiere(from, to, matiere);
     }
+
+    @GetMapping("mesDemandes/accepter/{id}")
+    public List<Demande> MesDemandeAccepter(@PathVariable Long id){
+        return demandeService.ListDemandeAccepterByEnvoyeur(id);
+    }
+
+    //------------------------------------nombre totale des demandes-----------------------------------
+
+    @GetMapping("nombre/totale")
+    public int nombreTotale(){
+        return demandeService.nombreTotaleDemade();
+    }
+
+    @GetMapping("nombre/accepter")
+    public int nombreAccepter(){
+        return  demandeService.nombreTotaleAccepter();
+    }
+
+    @GetMapping("nombre/decliner")
+    public int nombreDecliner(){
+        return  demandeService.nombreTotaleDecliner();
+    }
 }

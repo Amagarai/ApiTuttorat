@@ -20,9 +20,20 @@ public interface DemandeService {
     public Demande DEMANDEById(Long id);
     public Demande demandeByMatiere(Long from, Long to, String matiere);
 
+    //liste des demabde accepter ou decliner d'une personne donnée
     public List<Demande> ListDemandeRejeter(Long id);
     public List<Demande> ListDemandeAccepter(Long id);
     public Demande SupprimerDemande(Long id);
+
+    //la liste des demandes accepter des uilisateurs autre que le tuteur
+    public List<Demande> ListDemandeAccepterByEnvoyeur(Long id);
+
+
+    //----nombre totale de demande accepter et decliner
+
+    public int nombreTotaleDemade();
+    public int nombreTotaleAccepter();
+    public int nombreTotaleDecliner();
 
 
 }

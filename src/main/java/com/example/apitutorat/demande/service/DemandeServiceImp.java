@@ -160,4 +160,36 @@ public class DemandeServiceImp implements DemandeService{
         Utilisateur receveur= usersRepository.findById(to).get();
         return demandeRepository.findByEnvoyeurAndReceveurAndMatiere(sender, receveur, matiere);
     }
+
+    //----------la liste des demandes accepter d'un users differents de tuteur
+
+
+    @Override
+    public List<Demande> ListDemandeAccepterByEnvoyeur(Long id) {
+        Utilisateur user= usersRepository.findById(id).get();
+        return demandeRepository.findByEnvoyeurAndEtat(user, Etat.ACCEPTER);
+    }
+
+    //------------nombre totale de demande--------------
+
+    @Override
+    public int nombreTotaleDemade() {
+        List<Demande> list = demandeRepository.findAll();
+        int a = list.size();
+        return a;
+    }
+
+    @Override
+    public int nombreTotaleAccepter() {
+        List<Demande> list = demandeRepository.findByEtat(Etat.ACCEPTER);
+        int a = list.size();
+        return a;
+    }
+
+    @Override
+    public int nombreTotaleDecliner() {
+        List<Demande> list = demandeRepository.findByEtat(Etat.DECLINER);
+        int a = list.size();
+        return a;
+    }
 }
