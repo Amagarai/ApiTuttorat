@@ -23,6 +23,7 @@ public abstract class Utilisateur {
     private String numero;
     private String addresse;
     private String quartier;
+    @Enumerated(EnumType.STRING)
     private Profile profile;
     private String password;
     private boolean activiter = false;
