@@ -136,6 +136,27 @@ public class UserController {
     public Utilisateur Modify_Password(@PathVariable Long id, @RequestBody Utilisateur user){
        return userService.modify_pass(id, user);
     }
+        //-------modification des mots de passe-----
+
+    @PostMapping("users/modifypass/tuteur/{id}")
+    public void updatePassTuteur(@PathVariable Long id, @RequestBody Tuteur tuteur){
+        userService.updatePassTuteur(id, tuteur);
+    }
+
+    @PostMapping("users/modifypas/eleve/{id}")
+    public void updatePassEleve(@PathVariable Long id, @RequestBody Eleve eleve){
+        userService.updatePassEleve(id, eleve);
+    }
+
+    @PostMapping("users/modifypass/ecole/{id}")
+    public void updatePassEcole(@PathVariable Long id,@RequestBody Ecole ecole){
+        userService.updatePassEcole(id, ecole);
+    }
+
+    @PostMapping("users/modifypass/parent/{id}")
+    public void updatePassParent(@PathVariable Long id, Parent parent){
+        userService.updatePassParent(id, parent);
+    }
 
 
     //-------------------------------section supprimer te restorer---------------------------------------
@@ -184,6 +205,11 @@ public class UserController {
     @GetMapping("nombre/eleve")
     public int NbreTotaleEleve(){
         return userService.NbreTotaleEleve();
+    }
+
+    @GetMapping("nombre/parent")
+    public int NbreTotalPareent(){
+        return userService.NbreTotaleParent();
     }
 
     @GetMapping("nombre/ecole")

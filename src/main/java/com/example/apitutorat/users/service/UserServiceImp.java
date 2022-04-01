@@ -174,6 +174,36 @@ public class UserServiceImp implements UserService{
         user.setPassword(parent.getPassword());
         parentRepository.save(user);
     }
+        //----------sous section pour la modification des mot de passe
+
+    @Override
+    public void updatePassTuteur(Long id, Tuteur tuteur) {
+        Tuteur users = tuteurRepository.findById(id).get();
+        users.setPassword(tuteur.getPassword());
+        usersRepository.save(users);
+    }
+
+    @Override
+    public void updatePassEleve(Long id, Eleve eleve) {
+        Eleve users = eleveRepository.findById(id).get();
+        users.setPassword(eleve.getPassword());
+        eleveRepository.save(users);
+    }
+
+    @Override
+    public void updatePassEcole(Long id, Ecole ecole) {
+        Ecole users = ecoleRepository.findById(id).get();
+        users.setPassword(ecole.getPassword());
+        ecoleRepository.save(users);
+    }
+
+    @Override
+    public void updatePassParent(Long id, Parent parent) {
+        Parent users = parentRepository.findById(id).get();
+        users.setPassword(parent.getPassword());
+        parentRepository.save(users);
+    }
+
 
     //--------------fin
 

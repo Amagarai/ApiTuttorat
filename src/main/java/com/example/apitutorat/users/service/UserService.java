@@ -31,6 +31,11 @@ public interface UserService {
     public boolean disponibilite(Long id);
     public Utilisateur modify_pass(Long id, Utilisateur utilisateur);
     public List<Tuteur> TrouverParVille(String adresse);
+        //--------sous section pour la modification des mot de passe
+    public void updatePassTuteur(Long id, Tuteur tuteur);
+    public void updatePassEleve(Long id, Eleve eleve);
+    public void updatePassEcole(Long id, Ecole ecole);
+    public void updatePassParent(Long id, Parent parent);
 
     //---------fin
 
