@@ -99,19 +99,19 @@ public class DemandeServiceImp implements DemandeService{
     public List<Demande> listesAllDemande(Long from_id, Long to_id) {
         Utilisateur from= usersRepository.findById(from_id).get();
         Utilisateur to= usersRepository.findById(to_id).get();
-        return demandeRepository.findByEnvoyeurAndReceveurAndEtatIsTrue(from,to);
+        return demandeRepository.findByEnvoyeurAndReceveurAndEtatIsTrueOrderByIdDesc(from,to);
     }
 
     @Override
     public List<Demande> ListDemandeRejeter(Long id) {
         Utilisateur receveur = usersRepository.findById(id).get();
-        return demandeRepository.findByReceveurAndEtat(receveur, Etat.DECLINER );
+        return demandeRepository.findByReceveurAndEtatOrderByIdDesc(receveur, Etat.DECLINER );
     }
 
     @Override
     public List<Demande> ListDemandeAccepter(Long id) {
         Utilisateur receveur = usersRepository.findById(id).get();
-        return demandeRepository.findByReceveurAndEtat(receveur, Etat.ACCEPTER);
+        return demandeRepository.findByReceveurAndEtatOrderByIdDesc(receveur, Etat.ACCEPTER);
     }
 
     //------------fin
@@ -127,25 +127,25 @@ public class DemandeServiceImp implements DemandeService{
     @Override
     public List<Demande> GetByReceveur(Long id) {
         Utilisateur user= usersRepository.findById(id).get();
-        return demandeRepository.findByReceveur(user);
+        return demandeRepository.findByReceveurOrderByIdDesc(user);
     }
 
     @Override
     public List<Demande> ListeAllInitier() {
-        return demandeRepository.findByInitierIsTrue();
+        return demandeRepository.findByInitierIsTrueOrderByIdDesc();
     }
 
     @Override
     public List<Demande> InitierByEnvoyeurAndReceveur(Long from_id) {
         Utilisateur envoyeur= usersRepository.findById(from_id).get();
 
-        return demandeRepository.findByReceveurAndInitierIsTrue(envoyeur);
+        return demandeRepository.findByReceveurAndInitierIsTrueOrderByIdDesc(envoyeur);
     }
 
     @Override
     public List<Demande> InitierByReceveurAndEnvoyeur(Long to_id) {
         Utilisateur receveur = usersRepository.findById(to_id).get();
-        return  demandeRepository.findByEnvoyeurAndInitierIsTrue(receveur);
+        return  demandeRepository.findByEnvoyeurAndInitierIsTrueOrderByIdDesc(receveur);
     }
 
     @Override
@@ -167,7 +167,7 @@ public class DemandeServiceImp implements DemandeService{
     @Override
     public List<Demande> ListDemandeAccepterByEnvoyeur(Long id) {
         Utilisateur user= usersRepository.findById(id).get();
-        return demandeRepository.findByEnvoyeurAndEtat(user, Etat.ACCEPTER);
+        return demandeRepository.findByEnvoyeurAndEtatOrderByIdDesc(user, Etat.ACCEPTER);
     }
 
     //------------nombre totale de demande--------------

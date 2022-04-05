@@ -8,13 +8,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface DemandeRepository extends JpaRepository<Demande, Long> {
-    public List<Demande> findByEnvoyeurAndReceveurAndEtatIsTrue(Utilisateur envoyeur, Utilisateur receveur);
-    public List<Demande> findByReceveurAndEtat(Utilisateur receveur, Etat etat);
-    public List<Demande> findByReceveur(Utilisateur receveur);
-    public List<Demande> findByInitierIsTrue();
-    public List<Demande> findByReceveurAndInitierIsTrue(Utilisateur envoyeur);
-    public List<Demande> findByEnvoyeurAndInitierIsTrue(Utilisateur receveur );
+    public List<Demande> findByEnvoyeurAndReceveurAndEtatIsTrueOrderByIdDesc(Utilisateur envoyeur, Utilisateur receveur);
+    public List<Demande> findByReceveurAndEtatOrderByIdDesc(Utilisateur receveur, Etat etat);
+    public List<Demande> findByReceveurOrderByIdDesc(Utilisateur receveur);
+    public List<Demande> findByInitierIsTrueOrderByIdDesc();
+    public List<Demande> findByReceveurAndInitierIsTrueOrderByIdDesc(Utilisateur envoyeur);
+    public List<Demande> findByEnvoyeurAndInitierIsTrueOrderByIdDesc(Utilisateur receveur );
     public Demande findByEnvoyeurAndReceveurAndMatiere(Utilisateur envoyeur, Utilisateur receveur, String matiere);
-    public List<Demande> findByEnvoyeurAndEtat(Utilisateur user, Etat etat);
+    public List<Demande> findByEnvoyeurAndEtatOrderByIdDesc(Utilisateur user, Etat etat);
     public List<Demande> findByEtat(Etat etat);
 }

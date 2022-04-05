@@ -20,4 +20,11 @@ public class RegionServiceImp implements RegionService{
     public List<Region> liste() {
         return regionRepository.findAll();
     }
+
+    @Override
+    public int TotaleVille() {
+        List<Region> list = regionRepository.findAll();
+        int somme = list.size();
+        return somme;
+    }
 }

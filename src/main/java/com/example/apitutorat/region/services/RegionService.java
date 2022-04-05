@@ -7,4 +7,5 @@ import java.util.List;
 public interface RegionService {
     public Region addRegion(Region region);
     public List<Region> liste();
+    public int TotaleVille();
 }

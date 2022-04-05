@@ -21,6 +21,6 @@ public class NotificationServiceImp implements NotiticationService{
     @Override
     public List<Notification> GetByReceveur(Long id) {
         Utilisateur receveur = usersRepository.findById(id).get();
-        return notificationRepository.findByReceveur(receveur);
+        return notificationRepository.findByReceveurOrderByIdDesc(receveur);
     }
 }

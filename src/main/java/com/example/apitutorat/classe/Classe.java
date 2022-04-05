@@ -23,6 +23,7 @@ public class Classe {
     private String heure;
     private String nom;
     private LocalDate createDate;
+    private String lieu;
     private String matiere;
     private ClasseEtat etat;
 

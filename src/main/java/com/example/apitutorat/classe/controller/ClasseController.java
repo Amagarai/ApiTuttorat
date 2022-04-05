@@ -34,4 +34,14 @@ public class ClasseController {
     public Classe update(@RequestBody Classe classe, @PathVariable Long id){
         return classeServiceImp.updateClasse(classe, id);
     }
+
+    @GetMapping("totale")
+    public int Totale(){
+        return classeServiceImp.totaleClasse();
+    }
+
+    @GetMapping("totale/{id}")
+    public int totalById(@PathVariable Long id){
+        return classeServiceImp.totaleMesClasses(id);
+    }
 }

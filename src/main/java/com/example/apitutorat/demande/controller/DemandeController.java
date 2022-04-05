@@ -49,6 +49,7 @@ public class DemandeController {
         return demandeService.InitierByEnvoyeurAndReceveur(from);
     }
 
+    // partie pour les receveurs de demande;
     @GetMapping("initier/to/{from}")
     public List<Demande> GetListeInitierByReceveurAndEnvoyeur(@PathVariable Long from){
         return demandeService.InitierByReceveurAndEnvoyeur(from);

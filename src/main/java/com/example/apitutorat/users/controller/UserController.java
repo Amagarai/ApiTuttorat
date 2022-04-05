@@ -127,9 +127,9 @@ public class UserController {
         userService.modidy_parent(id, parent);
     }
 
-    @PutMapping("tuteur/dispo/{id}")
-    public boolean disponibiliter(@PathVariable Long id){
-       return userService.disponibilite(id);
+    @PostMapping("tuteur/dispo/{id}")
+    public Tuteur disponibiliter(@PathVariable Long id){
+        return userService.disponibilite(id);
     }
 
     @PutMapping("user/modifypass/{id}")

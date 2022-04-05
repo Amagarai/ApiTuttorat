@@ -33,7 +33,7 @@ public class ClasseServiceImp implements ClasseService{
     @Override
     public List<Classe> classeByTuteur(Long id) {
         Utilisateur utilisateur = usersRepository.findById(id).get();
-        return classeRepository.findByTuteurAndEtat(utilisateur, ClasseEtat.ACTIVER);
+        return classeRepository.findByTuteurAndEtatOrderByIdDesc(utilisateur, ClasseEtat.ACTIVER);
     }
 
     @Override
@@ -47,5 +47,20 @@ public class ClasseServiceImp implements ClasseService{
         existClasse.setEleves(classe.getEleves());
         classeRepository.save(existClasse);
         return null;
+    }
+
+    @Override
+    public int totaleClasse() {
+        List<Classe> list = classeRepository.findAll();
+        int totale = list.size();
+        return totale;
+    }
+
+    @Override
+    public int totaleMesClasses(Long id) {
+        Utilisateur tuteur = usersRepository.findById(id).get();
+       List<Classe> list = classeRepository.findByTuteurAndEtatOrderByIdDesc(tuteur, ClasseEtat.ACTIVER);
+        int somme = list.size();
+        return somme;
     }
 }

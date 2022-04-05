@@ -23,4 +23,9 @@ public class RegionController {
     public List<Region> list(){
         return regionServiceImp.liste();
     }
+
+    @GetMapping("nombre")
+    public int Totale(){
+        return regionServiceImp.TotaleVille();
+    }
 }

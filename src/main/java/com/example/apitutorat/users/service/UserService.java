@@ -28,7 +28,7 @@ public interface UserService {
     public void modify_tuteur(Long id, Tuteur tuteur);
     public void modify_eleve(Long id, Eleve eleve);
     public void modidy_parent(Long id, Parent  parent);
-    public boolean disponibilite(Long id);
+    public Tuteur disponibilite(Long id);
     public Utilisateur modify_pass(Long id, Utilisateur utilisateur);
     public List<Tuteur> TrouverParVille(String adresse);
         //--------sous section pour la modification des mot de passe

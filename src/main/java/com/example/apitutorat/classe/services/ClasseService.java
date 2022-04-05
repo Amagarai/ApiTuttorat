@@ -10,4 +10,6 @@ public interface ClasseService {
     public List<Classe> classeByTuteur(Long id);
     public Classe classeById(Long id);
     public Classe updateClasse( Classe classe,Long id);
+    public int totaleClasse();
+    public int totaleMesClasses(Long id);
 }

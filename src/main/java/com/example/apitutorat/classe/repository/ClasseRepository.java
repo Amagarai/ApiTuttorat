@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface ClasseRepository extends JpaRepository<Classe, Long> {
 
-    public List<Classe> findByTuteurAndEtat(Utilisateur tuteur, ClasseEtat etat);
+    public List<Classe> findByTuteurAndEtatOrderByIdDesc(Utilisateur tuteur, ClasseEtat etat);
 }

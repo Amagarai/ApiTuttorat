@@ -212,15 +212,14 @@ public class UserServiceImp implements UserService{
 
 
     @Override
-    public boolean disponibilite(Long id) {
+    public Tuteur disponibilite(Long id) {
         Tuteur user= tuteurRepository.findById(id).get();
         if (user.isDisponibilite()){
             user.setDisponibilite(false);
         }else {
             user.setDisponibilite(true);
         }
-        tuteurRepository.save(user);
-        return true;
+       return tuteurRepository.save(user);
     }
 
     @Override
