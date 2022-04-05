@@ -39,13 +39,15 @@ public interface UsersRepository extends JpaRepository<Utilisateur, Long> {
     //------------------------Login-------------------------------
 
     public List<Utilisateur>     findByNumeroAndPassword(String numero, String password);
-    public List<Ecole> findByNumero(String numero);
+    //public List<Ecole> findByNumero(String numero);
 
     //------fin
 
     //--------------------liste des tuteurs selon leur ville et leur etats---------------------------------
 
     public List<Tuteur> findByAddresseAndEtat(String addresse, Etat etat);
+
+    public Utilisateur findByNumero(String numero);
 
 
 }

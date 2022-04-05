@@ -312,4 +312,11 @@ public class UserServiceImp implements UserService{
         List<Utilisateur> list= usersRepository.listerEcole();
         return list.size();
     }
+
+    //determiner si le numero existe
+
+    @Override
+    public Utilisateur numeroExist(String numero) {
+        return usersRepository.findByNumero(numero);
+    }
 }

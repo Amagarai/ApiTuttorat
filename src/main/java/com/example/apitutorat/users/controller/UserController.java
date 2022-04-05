@@ -216,4 +216,9 @@ public class UserController {
     public  int NbreTotaleEcole(){
         return userService.NbreTotaleEcole();
     }
+
+    @GetMapping("exist/{numero}")
+    public Utilisateur exist(@PathVariable String numero){
+        return userService.numeroExist(numero);
+    }
 }
